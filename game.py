@@ -5,7 +5,10 @@ def get_input():
     return False if inputted in ('q', 'quit') else inputted
 
 def game():
-    print(locations)
+    print()
+    for i in locations.values():
+        i.info()
+        print()
 
 
 if __name__ == "__main__":
