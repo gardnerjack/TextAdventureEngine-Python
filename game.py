@@ -36,7 +36,7 @@ def game():
 
 
 if __name__ == "__main__":
-    initilise_locations("StoryA.txt")
+    initilise_locations("locations.txt")
     for i in locations.values():
         current_location = i
         break
