@@ -5,5 +5,5 @@ destinations: "mine"[west]
 --
 name: mine
 description: the mine, starting location to the east.
-destinations: "starting location"[east]
+destinations: "Starting Location"[east]
 --

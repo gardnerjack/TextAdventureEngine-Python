@@ -4,5 +4,6 @@ Uses a simple textfile template to create a python-based text adventure
 
 ## TODO:
 
-- Destinations for locations
-- Moving between locations
+- Items for locations
+- Picking up and using items
+- Interacting with objects (doors, rocks, trees, etc.)

@@ -20,8 +20,20 @@ class Location:
         for c in text:
             stdout.write(c)
             stdout.flush()
-            sleep(0.02)
         print()
+
+    def move(self, direction):
+        if direction == 'n': direction = 'north'
+        elif direction == 'e': direction = 'east'
+        elif direction == 's': direction = 'south'
+        elif direction == 'w': direction = 'west'
+        new_location = None
+        for d in self._destinations:
+            if d.direction == direction:
+                new_location = d.name
+        if not new_location: print("Nothing that way!")
+        return new_location
+
 
     def info(self):
         print("name:", self._name)
