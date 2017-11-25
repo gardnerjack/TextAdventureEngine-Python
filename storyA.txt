@@ -1,0 +1,7 @@
+name: Starting Location
+description: Here we are at the coolest starting location of all time. There is a rock, and a cool kid mine.
+things:
+destinations: ...
+
+name: next location
+description: yeet
