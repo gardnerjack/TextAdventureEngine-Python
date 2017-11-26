@@ -1,4 +1,5 @@
 from parser import initilise_locations, locations
+from models import Player
 
 MOVE = 'move'
 QUIT = 'quit'
@@ -15,6 +16,7 @@ def handle(command):
         print("north, east, south, west - directions to move in")
         print("n, e, s, w - abbreviated versions of movement commands")
         print("show - show description of current location")
+        print("p, player - display player information")
     elif command == 'show':
         current_location.output()
     elif command in ('n', 'w', 's', 'e', 'north', 'west', 'south', 'east'):
@@ -22,22 +24,27 @@ def handle(command):
     else:
         print("Please enter a value command")
 
+def move_player(direction):
+    location_name = player.location.get_destination(direction)
+    if location_name:
+        player.move(locations[location_name])
+        player.location.output()
+
 def game():
-    global current_location
-    current_location.output()
+    player.location.output()
     while True:
         command = get_input()
         if not command: break
         if handle(command) == MOVE:
-            new_location = current_location.move(command)
-            if new_location:
-                current_location = locations[new_location]
-                current_location.output()
+            move_player(command)
+
 
 
 if __name__ == "__main__":
-    initilise_locations("locations.txt")
+    initilise_locations("game_info/locations.txt")
     for i in locations.values():
         current_location = i
         break
+    global player
+    player = Player(current_location)
     game()

@@ -2,7 +2,7 @@ from time import sleep
 from sys import stdout
 
 # All classes used to model certain aspects of game
-# Story (text file) is converted into objects to be used in game
+# Story (text files) are converted into objects to be used in game
 
 class Location:
 
@@ -22,7 +22,7 @@ class Location:
             stdout.flush()
         print()
 
-    def move(self, direction):
+    def get_destination(self, direction):
         if direction == 'n': direction = 'north'
         elif direction == 'e': direction = 'east'
         elif direction == 's': direction = 'south'
@@ -56,6 +56,21 @@ class Destination:
 
     def __str__(self):
         return "\"%s\"[%s]" % (self._name, self._direction)
+
+
+class Player:
+
+    def __init__(self, location):
+        self.xp = 0
+        self.level = 0
+        self._location = location
+
+    def move(self, new_location):
+        self._location = new_location
+
+    @property
+    def location(self):
+        return self._location
 
 
 if __name__ == "__main__":
