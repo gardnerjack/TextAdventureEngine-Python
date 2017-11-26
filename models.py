@@ -4,11 +4,16 @@ from sys import stdout
 # All classes used to model certain aspects of game
 # Story (text files) are converted into objects to be used in game
 
-class Location:
+class Base:
 
-    def __init__(self, name, description, items, destinations):
+    def __init__(self, name, description):
         self._name = name
         self._description = description
+
+class Location(Base):
+
+    def __init__(self, name, description, items, destinations):
+        super().__init__(name, description)
         self._destinations = destinations if destinations else []
         self._items = items if items else []
 
@@ -21,6 +26,15 @@ class Location:
             stdout.write(c)
             stdout.flush()
         print()
+
+    def item_exists(self, item):
+        return True if item in self._items else False
+
+    def remove_item(self, item):
+        self._items.remove(item)
+
+    def add_item(self, item):
+        self._items.append(item)
 
     def get_destination(self, direction):
         if direction == 'n': direction = 'north'
@@ -64,13 +78,43 @@ class Player:
         self.xp = 0
         self.level = 0
         self._location = location
+        self._inventory = []
 
     def move(self, new_location):
         self._location = new_location
 
+    def has_item(self, item):
+        return True if item in self._inventory else False
+
+    def pickup(self, item):
+        self._inventory.append(item)
+
+    def drop(self, item):
+        self._inventory.remove(item)
+
     @property
     def location(self):
         return self._location
+
+    def __str__(self):
+        return "XP: {xp}\nLEVEL: {lvl}\nINVENTORY: {items}".format(
+                    xp=self.xp, lvl=self.level, items=', '.join(self._inventory)
+                )
+
+
+class Object(Base):
+
+    def __init__(self, name, description, oyield, attributes):
+        super().__init__(name, description)
+        self._yield = oyield
+        self._attributes = attributes
+
+
+class Tool(Base):
+
+    def __init__(self, name, description, attributes):
+        super().__init__(name, description)
+        self._attributes = attributes
 
 
 if __name__ == "__main__":

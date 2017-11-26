@@ -1,9 +1,10 @@
-name: Starting Location
-description: Here we are at the coolest starting location of all time. There is a rock, and a mine to the west.
-items: rock
+name: Clearing
+description: Here we are at the coolest starting location of all time. There is a pickaxe, and a mine to the west.
+items: pickaxe
 destinations: "mine"[west]
 --
 name: mine
-description: the mine, starting location to the east.
-destinations: "Starting Location"[east]
+description: The mine, a large rock and a clearing to the east.
+items: rock
+destinations: "Clearing"[east]
 --

@@ -1,0 +1,15 @@
+name: rock
+type: object
+description: A large boulder with mineral veins running through it.
+attributes: mining
+yield: coal
+--
+name: pickaxe
+type: tool
+description: a worn down pickaxe with a rusted iron head and wooden handle.
+attributes: mining
+--
+name: axe
+type: tool
+description: just an axe
+attributes: wood
