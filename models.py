@@ -4,16 +4,11 @@ from sys import stdout
 # All classes used to model certain aspects of game
 # Story (text files) are converted into objects to be used in game
 
-class Base:
-
-    def __init__(self, name, description):
-        self._name = name
-        self._description = description
-
-class Location(Base):
+class Location:
 
     def __init__(self, name, description, items, destinations):
-        super().__init__(name, description)
+        self._name = name
+        self._description = description
         self._destinations = destinations if destinations else []
         self._items = items if items else []
 
@@ -88,9 +83,11 @@ class Player:
 
     def pickup(self, item):
         self._inventory.append(item)
+        print("You pick up:", item)
 
     def drop(self, item):
         self._inventory.remove(item)
+        print("You drop:", item)
 
     @property
     def location(self):
@@ -102,19 +99,35 @@ class Player:
                 )
 
 
-class Object(Base):
-
-    def __init__(self, name, description, oyield, attributes):
-        super().__init__(name, description)
-        self._yield = oyield
-        self._attributes = attributes
-
-
-class Tool(Base):
+class Item:
 
     def __init__(self, name, description, attributes):
-        super().__init__(name, description)
-        self._attributes = attributes
+        self._name = name
+        self._description = description
+        self._attributes = attributes if attributes else []
+
+    def attributes_set(self):
+        return set(self._attributes)
+
+    def __str__(self):
+        return self._description
+
+
+class Object(Item):
+
+    def __init__(self, name, description, oyield, attributes):
+        super().__init__(name, description, attributes)
+        self._yield = oyield
+
+    @property
+    def reward(self):
+        return self._yield
+
+
+class Tool(Item):
+
+    def __init__(self, name, description, attributes):
+        super().__init__(name, description, attributes)
 
 
 if __name__ == "__main__":
