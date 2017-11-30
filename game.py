@@ -37,9 +37,9 @@ def use(command):
         item = items[matchObj.group(1)] if matchObj.group(1) in items else None
         thing = items[matchObj.group(2)] if matchObj.group(2) in items else None
         if not item or not player.has_item(item):
-            print("You do not have:", item.name)
+            print("You do not have:", str(item) if item else matchObj.group(1))
         elif not thing or not player.location.item_exists(thing):
-            print(thing, "does not exist")
+            print(str(thing) if thing else matchObj.group(2), "does not exist")
         else:
             if len(item.attributes_set().union(thing.attributes_set())) > 0:
                 player.pickup(thing.reward)

@@ -23,10 +23,14 @@ class Handler:
 
     def help(self):
         print("Available commands:")
-        print("h, help - list commands")
-        print("q, quit - quit the game")
-        print("north, east, south, west - directions to move in")
-        print("n, e, s, w - abbreviated versions of movement commands")
-        print("show - show description of current location")
-        print("p, player - display player information")
-        print("actions:\n   get <item>\n   drop <item>\n   use <item> on <object>\n   inspect <item/object>")
+        print(" h, help - list commands")
+        print(" q, quit - quit the game")
+        print(" north, east, south, west - directions to move in")
+        print(" n, e, s, w - abbreviated versions of movement commands")
+        print(" show - show description of current location")
+        print(" p, player - display player information")
+        print(" actions:\n    get <item>\n    drop <item>\n    use <item> on <object>\n    inspect <item/object>")
+
+
+if __name__ == "__main__":
+    print("Command handler class for game.py")
