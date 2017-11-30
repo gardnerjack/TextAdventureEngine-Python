@@ -16,7 +16,7 @@ destinations: "deeper into the mine"[west]
 **Example Tool (items.txt):**  
 name: pickaxe  
 type: tool  
-description: a worn down pickaxe with a rusted iron head and wooden handle.
+description: a worn down pickaxe with a rusted iron head and wooden handle.  
 attributes: mining
 
 **Example Object (items.txt):**  
