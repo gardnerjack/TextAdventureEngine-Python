@@ -1,5 +1,4 @@
 from re import match
-from cmd import Cmd
 from parser import initilise_game_info, locations, items
 from models import Object, Tool
 from characters import Player
@@ -68,9 +67,6 @@ def game():
 
 if __name__ == "__main__":
     initilise_game_info()
-    for i in locations.values():
-        current_location = i
-        break
     global player
-    player = Player(current_location)
+    player = Player(list(locations.values())[0])
     game()
