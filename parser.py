@@ -5,8 +5,8 @@ locations = {}
 items = {}
 
 def initilise_game_info():
-    initilise_locations()
     initialise_items()
+    initilise_locations()
 
 def match_item(pattern, line):
     obj = match(pattern, line)
@@ -20,11 +20,11 @@ def match_list(pattern, line):
 
 def initilise_locations():
     f = open("game_info/locations.txt", 'r')
-    name, description, items, destinations = None, None, None, None
+    name, description, loc_items, destinations = None, None, None, None
     for line in f:
         if not name: name = match_item("name:", line)
         if not description: description = match_item("description:", line)
-        if not items: items = match_list("items:", line)
+        if not loc_items: loc_items = match_list("items:", line)
         if not destinations:
             destinationsObj = match("destinations:", line)
             if destinationsObj:
@@ -32,8 +32,8 @@ def initilise_locations():
                 for i in finditer(r"\"(.+?)\"\[(.+?)\]", line[14:len(line)-1]):
                     destinations.append(Destination(i.group(1), i.group(2)))
         if match("--", line):
-            locations[name] = Location(name, description, items, destinations)
-            name, description, items, destinations = None, None, None, None
+            locations[name] = Location(name, description, [items[i] for i in loc_items] if loc_items else None, destinations)
+            name, description, loc_items, destinations = None, None, None, None
     f.close()
 
 def initialise_items():
