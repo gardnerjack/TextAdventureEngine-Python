@@ -103,4 +103,4 @@ class Tool(Item):
 
 
 if __name__ == "__main__":
-    print("Models/Classes for game.py")
+    print("Models for game.py")

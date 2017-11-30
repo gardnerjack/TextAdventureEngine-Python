@@ -28,3 +28,7 @@ class Player:
         return "XP: {xp}\nLEVEL: {lvl}\nINVENTORY: {items}".format(
                     xp=self.xp, lvl=self.level, items=', '.join([str(i) for i in self._inventory])
                 )
+
+
+if __name__ == "__main__":
+    print("Character classes for game.py")

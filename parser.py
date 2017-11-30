@@ -53,4 +53,4 @@ def initialise_items():
 
 
 if __name__ == "__main__":
-    print("Auxillary methods for game.py")
+    print("Initialisation functions for game.py")
