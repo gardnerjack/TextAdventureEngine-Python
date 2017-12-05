@@ -1,8 +1,8 @@
 from re import match
 from parser import initilise_game_info, locations, items
-from models import Object, Tool
-from characters import Player
-from commands import Handler
+from models.commands import Handler
+from models.items import Object, Tool
+from models.characters import Player
 
 def get_input():
     inputted = input('> ')
@@ -58,10 +58,11 @@ def inspect(command):
 
 def game():
     player.location.output()
+    does_things = Handler()
     while True:
         command = get_input()
         if not command: break
-        todo = Handler(player).handle(command)
+        todo = does_things.handle(command, player)
         if todo: eval(todo + '(command)')
 
 

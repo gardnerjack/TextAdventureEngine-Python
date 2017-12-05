@@ -6,15 +6,13 @@ INSPECT = 'inspect'
 
 class Handler:
 
-    def __init__(self, player):
-        self.player = player
-        self.directions = ('n', 'w', 's', 'e', 'north', 'west', 'south', 'east')
+    directions = ('n', 'w', 's', 'e', 'north', 'west', 'south', 'east')
 
-    def handle(self, command):
+    def handle(self, command, player):
         if command in ('h', 'help'): self.help()
-        elif command == 'show': self.player.location.output()
+        elif command == 'show': player.location.output()
         elif command in self.directions: return MOVE
-        elif command in ('p', 'player'): print(str(self.player))
+        elif command in ('p', 'player'): print(str(player))
         elif command.startswith('get '): return GET
         elif command.startswith('drop '): return DROP
         elif command.startswith('use '): return USE

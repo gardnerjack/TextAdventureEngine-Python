@@ -1,5 +1,6 @@
 from re import match, finditer
-from models import Location, Destination, Object, Tool
+from models.items import Object, Tool
+from models.locations import Location, Destination
 
 locations = {}
 items = {}

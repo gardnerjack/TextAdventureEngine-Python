@@ -1,9 +1,3 @@
-from time import sleep
-from sys import stdout
-
-# All classes used to model certain aspects of game
-# Story (text files) are converted into objects to be used in game
-
 class Location:
 
     def __init__(self, name, description, items, destinations):
@@ -16,11 +10,7 @@ class Location:
         return "%s\n%s" % (self._name, self._description)
 
     def output(self):
-        text = str(self)
-        for c in text:
-            stdout.write(c)
-            stdout.flush()
-        print()
+        print(str(self))
 
     def item_exists(self, item):
         return True if item in self._items else False
@@ -65,42 +55,3 @@ class Destination:
 
     def __str__(self):
         return "\"%s\"[%s]" % (self._name, self._direction)
-
-
-class Item:
-
-    def __init__(self, name, description, attributes):
-        self._name = name
-        self._description = description
-        self._attributes = attributes if attributes else []
-
-    def attributes_set(self):
-        return set(self._attributes)
-
-    def __str__(self):
-        return self._name
-
-    @property
-    def description(self):
-        return self._description
-
-
-class Object(Item):
-
-    def __init__(self, name, description, oyield, attributes):
-        super().__init__(name, description, attributes)
-        self._yield = oyield
-
-    @property
-    def reward(self):
-        return self._yield
-
-
-class Tool(Item):
-
-    def __init__(self, name, description, attributes):
-        super().__init__(name, description, attributes)
-
-
-if __name__ == "__main__":
-    print("Models for game.py")
