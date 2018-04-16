@@ -1,4 +1,4 @@
-# Basic text adventure creator
+# Basic Text Adventure Engine
 
 Uses a simple text file template to create a python-based text adventure.
 
