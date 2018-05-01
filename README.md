@@ -32,6 +32,7 @@ Items with the same attributes can interact. For example giving both a pickaxe a
 
 ## TODO:
 
+- Comments, more comments, and even more comments
 - Combat
   - Weapon items
   - NPCs

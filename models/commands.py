@@ -9,15 +9,34 @@ class Handler:
     directions = ('n', 'w', 's', 'e', 'north', 'west', 'south', 'east')
 
     def handle(self, command, player):
-        if command in ('h', 'help'): self.help()
-        elif command == 'show': player.location.output()
-        elif command in self.directions: return MOVE
-        elif command in ('p', 'player'): print(str(player))
-        elif command.startswith('get '): return GET
-        elif command.startswith('drop '): return DROP
-        elif command.startswith('use '): return USE
-        elif command.startswith('inspect '): return INSPECT
-        else: print("Please enter a valid command")
+
+        if command in ('h', 'help'):
+            self.help()
+
+        elif command == 'show':
+            player.location.output()
+
+        elif command in self.directions:
+            return MOVE
+
+        elif command in ('p', 'player'):
+            print(str(player))
+
+        elif command.startswith('get '):
+            return GET
+
+        elif command.startswith('drop '):
+            return DROP
+
+        elif command.startswith('use '):
+            return USE
+
+        elif command.startswith('inspect '):
+            return INSPECT
+
+        else:
+            print("Please enter a valid command")
+
 
     def help(self):
         print("Available commands:")

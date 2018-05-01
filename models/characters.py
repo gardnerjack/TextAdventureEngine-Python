@@ -26,8 +26,10 @@ class Player:
 
     def __str__(self):
         return "XP: {xp}\nLEVEL: {lvl}\nINVENTORY: {items}".format(
-                    xp=self.xp, lvl=self.level, items=', '.join([str(i) for i in self._inventory])
-                )
+            xp = self.xp,
+            lvl = self.level,
+            items = ', '.join([str(i) for i in self._inventory])
+        )
 
 
 if __name__ == "__main__":
