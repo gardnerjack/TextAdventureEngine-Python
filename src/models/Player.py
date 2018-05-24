@@ -1,8 +1,8 @@
 class Player(object):
 
     def __init__(self, location):
-        self.xp = 0
-        self.level = 0
+        # self.xp = 0
+        # self.level = 0
         self._location = location
         self._inventory = []
 
@@ -25,11 +25,14 @@ class Player(object):
         return self._location
 
     def __str__(self):
-        return "XP: {xp}\nLEVEL: {lvl}\nINVENTORY: {items}".format(
-            xp = self.xp,
-            lvl = self.level,
+        return "INVENTORY: {items}".format(
             items = ', '.join([str(i) for i in self._inventory])
         )
+        # return "XP: {xp}\nLEVEL: {lvl}\nINVENTORY: {items}".format(
+        #     xp = self.xp,
+        #     lvl = self.level,
+        #     items = ', '.join([str(i) for i in self._inventory])
+        # )
 
 
 if __name__ == "__main__":

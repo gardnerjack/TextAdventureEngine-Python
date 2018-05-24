@@ -1,14 +1,15 @@
 from re import match
-from parser.Parser import Parser
-from models.Handler import Handler
-from models.Item import Object, Tool
-from models.Player import Player
+
+from src.utilities.Parser  import Parser
+from src.utilities.Handler import Handler
+from src.models.Item       import Object, Tool
+from src.models.Player     import Player
 
 
 class Engine(object):
 
     def __init__(self):
-        self.locations, self.items = Parser().initilise_game_info()
+        self.items, self.locations = Parser().initilise_game_info()
         self.player = Player(list(self.locations.values())[0])
         self.handler = Handler()
 
@@ -26,7 +27,7 @@ class Engine(object):
 
 
     def get(self, command):
-        item = self.items[command[4:]] if command[4:] in self.items else None
+        item = self.items.get(command[4:])
         if item and self.player.location.item_exists(item) and type(item) == Tool:
             self.player.location.remove_item(item)
             self.player.pickup(item)
@@ -35,7 +36,7 @@ class Engine(object):
 
 
     def drop(self, command):
-        item = self.items[command[4:]] if command[4:] in self.items else None
+        item = self.items.get(command[4:])
         if item and self.player.has_item(item):
             self.player.location.add_item(item)
             self.player.drop(item)
@@ -50,8 +51,8 @@ class Engine(object):
         if matchObj:
             item_text, thing_text = matchObj.groups()
 
-            item  = self.items[item_text]  if item_text  in self.items else None
-            thing = self.items[thing_text] if thing_text in self.items else None
+            item  = self.items.get(item_text)
+            thing = self.items.get(thing_text)
 
             if not item or not self.player.has_item(item):
                 print("You do not have: {item}".format(
@@ -77,7 +78,7 @@ class Engine(object):
 
 
     def inspect(self, command):
-        item = self.items[command[8:]] if command[8:] in self.items else None
+        item = self.items.get(command[8:])
         if self.player.has_item(item) or self.player.location.item_exists(item):
             print(item.description)
         else:
@@ -88,9 +89,11 @@ class Engine(object):
         self.player.location.output()
         while True:
             command = self.get_input()
-            if not command: break
+            if not command:
+                break
             todo = self.handler.handle(command, self.player)
-            if todo: eval(todo + '(command)')
+            if todo:
+                eval('self.' + todo + '(command)')
 
 
 if __name__ == "__main__":

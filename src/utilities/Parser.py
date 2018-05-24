@@ -1,20 +1,24 @@
-from re import match, finditer
-from models.Item import Object, Tool
-from models.Location import Location, Destination
+from re      import match, finditer
+import os
+from os.path import isdir
+
+from src.models.Item     import Object, Tool
+from src.models.Location import Location, Destination
 
 
 class Parser(object):
 
-
     def __init__(self):
         self.locations = {}
         self.items = {}
+        if not isdir("src/game_info"):
+            raise Exception("Have you run the game creation script?")
 
 
     def initilise_game_info(self):
-        self.initilise_locations()
         self.initialise_items()
-        return self.locations, self.items
+        self.initilise_locations()
+        return self.items, self.locations
 
 
     def match_item(self, pattern, line):
@@ -29,14 +33,14 @@ class Parser(object):
     def match_list(self, pattern, line):
         obj = match(pattern, line)
         if obj is not None:
-            self.items = line[len(pattern) + 1 : len(line) - 1].split(', ')
+            items = line[len(pattern) + 1 : len(line) - 1].split(', ')
         else:
-            self.items = None
-        return self.items
+            items = None
+        return items
 
 
     def initilise_locations(self):
-        f = open("game_info/locations.txt", 'r')
+        f = open("src/game_info/locations.txt", 'r')
         name, description, loc_items, destinations = (None,) * 4
 
         for line in f:
@@ -48,7 +52,7 @@ class Parser(object):
                 description = self.match_item("description:", line)
 
             if loc_items is None:
-                loc_items = self.match_list("self.items:", line)
+                loc_items = self.match_list("items:", line)
 
             if destinations is None:
                 destinationsObj = match("destinations:", line)
@@ -68,7 +72,7 @@ class Parser(object):
 
 
     def initialise_items(self):
-        f = open("game_info/items.txt", 'r')
+        f = open("src/game_info/items.txt", 'r')
         name, item_type, description, attributes, object_yield = (None,) * 5
 
         for line in f:

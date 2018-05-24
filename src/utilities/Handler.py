@@ -1,7 +1,7 @@
-MOVE = 'move'
-GET = 'get'
-DROP = 'drop'
-USE = 'use'
+MOVE    = 'move'
+GET     = 'get'
+DROP    = 'drop'
+USE     = 'use'
 INSPECT = 'inspect'
 
 class Handler(object):
