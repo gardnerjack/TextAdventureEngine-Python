@@ -1,6 +1,6 @@
 from re import match, finditer
-from models.items import Object, Tool
-from models.locations import Location, Destination
+from models.Item import Object, Tool
+from models.Location import Location, Destination
 
 locations = {}
 items = {}
@@ -81,8 +81,8 @@ def initialise_items():
 
         if match("--", line):
             if item_type == 'object':
-                items[name] = Object(name, description, oyield, attributes)
-            elif itemtype == 'tool':
+                items[name] = Object(name, description, object_yield, attributes)
+            elif item_type == 'tool':
                 items[name] = Tool(name, description, attributes)
             name, itype, description, attributes, oyield = (None,) * 5
 
