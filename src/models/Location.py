@@ -16,8 +16,8 @@ class Location:
 
     def __str__(self):
         return "{name}\n{desc}".format(
-            name: self._name,
-            desc: self._description
+            name = self._name,
+            desc = self._description
         )
 
 
@@ -77,6 +77,6 @@ class Destination:
 
     def __str__(self):
         return "\"{name}\"[{direction}]".format(
-            name: self._name,
-            direction: self._direction
+            name = self._name,
+            direction = self._direction
         )
