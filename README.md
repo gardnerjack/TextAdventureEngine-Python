@@ -3,9 +3,32 @@
 Uses a set of easy-to-make text file templates to create a text adventure game.  
 Created in Python 3.
 
+## Releases
+
+[v1.0 - The First Working Release](https://github.com/gardnerjack/TextAdventureEngine-Python/releases/tag/1.0)
+
+## Usage
+
+Download the zip from the above release and unzip it wherever you want to create the game.  
+Create the required text files with the game information (see [Templates](#Templates)) in a directory with the unzipped contents.
+
+Run the creation script with your new template directory to initialise the engine. For example:
+
+```
+sh create.sh sample
+```
+
+Then, just run the play Python program:
+
+```
+python play.py
+```
+
+## The Engine
+
 ### Templates
 
-Three text files are used the craft the game: *items.txt*, *locations.txt*, and *NPCs.txt*  
+Two text files are used the craft the base game: *items.txt*, *locations.txt*.
 They all follow a similar format of listing fields with specific items separated by "--".
 
 **Example Location (locations.txt):**  
@@ -29,11 +52,10 @@ yield: coal
 
 ### Item Attributes and Yields
 
-Items with the same attributes can interact. For example giving both a pickaxe and a rock the attribute 'mining' means that the pickaxe can be used on the rock with the command "use pickaxe on rock". Furthermore, if the rock is given a yield such as coal, the player will have coal added to their inventory after using the pickaxe on the rock, and the player will no longer be able to mine the rock.
+Items with the same attributes can interact. For example, giving both a pickaxe and a rock the attribute 'mining' means that the pickaxe can be used on the rock with the command "use pickaxe on rock". Furthermore, if the rock is given a yield such as coal, the player will have coal added to their inventory after using the pickaxe on the rock, and the player will no longer be able to mine the rock.
 
 ## TODO:
 
-- Comments, more comments, and even more comments
 - Combat
   - Weapon items
   - NPCs
