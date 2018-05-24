@@ -1,6 +1,7 @@
 # Basic Text Adventure Engine
 
-Uses a simple text file template to create a python-based text adventure.
+Uses a set of easy-to-make text file templates to create a text adventure game.  
+Created in Python 3.
 
 ### Templates
 

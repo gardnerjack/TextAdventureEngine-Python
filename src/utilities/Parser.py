@@ -1,6 +1,6 @@
 from re      import match, finditer
 import os
-from os.path import isdir
+from os.path import isdir, exists
 
 from src.models.Item     import Object, Tool
 from src.models.Location import Location, Destination
@@ -13,6 +13,10 @@ class Parser(object):
         self.items = {}
         if not isdir("src/game_info"):
             raise Exception("Have you run the game creation script?")
+        if not exists("src/game_info/items.txt"):
+            raise Exception("items.txt does not exist")
+        if not exists("src/game_info/locations.txt"):
+            raise Exception("locations.txt does not exist")
 
 
     def initilise_game_info(self):
