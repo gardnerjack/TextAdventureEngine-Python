@@ -1,4 +1,4 @@
-class Item:
+class Item(object):
 
     def __init__(self, name, description, attributes):
         self._name = name

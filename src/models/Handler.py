@@ -4,7 +4,7 @@ DROP = 'drop'
 USE = 'use'
 INSPECT = 'inspect'
 
-class Handler:
+class Handler(object):
 
     directions = ('n', 'w', 's', 'e', 'north', 'west', 'south', 'east')
 

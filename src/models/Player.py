@@ -1,4 +1,4 @@
-class Player:
+class Player(object):
 
     def __init__(self, location):
         self.xp = 0

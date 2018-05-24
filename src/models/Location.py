@@ -1,4 +1,4 @@
-class Location:
+class Location(object):
 
     def __init__(self, name, description, items, destinations):
         self._name = name
@@ -61,7 +61,7 @@ class Location:
 
 
 
-class Destination:
+class Destination(object):
 
     def __init__(self, name, direction):
         self._name = name

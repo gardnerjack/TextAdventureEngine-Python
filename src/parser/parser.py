@@ -2,15 +2,20 @@ from re import match, finditer
 from models.Item import Object, Tool
 from models.Location import Location, Destination
 
+
 class Parser(object):
+
 
     def __init__(self):
         self.locations = {}
         self.items = {}
 
-    def initilise_game_info(self, ):
-        self.initialise_items()
+
+    def initilise_game_info(self):
         self.initilise_locations()
+        self.initialise_items()
+        return self.locations, self.items
+
 
     def match_item(self, pattern, line):
         obj = match(pattern, line)
@@ -19,6 +24,7 @@ class Parser(object):
         else:
             value = None
         return value
+
 
     def match_list(self, pattern, line):
         obj = match(pattern, line)
@@ -30,7 +36,7 @@ class Parser(object):
 
 
     def initilise_locations(self):
-        f = open("game_info/self.locations.txt", 'r')
+        f = open("game_info/locations.txt", 'r')
         name, description, loc_items, destinations = (None,) * 4
 
         for line in f:
@@ -62,7 +68,7 @@ class Parser(object):
 
 
     def initialise_items(self):
-        f = open("game_info/self.items.txt", 'r')
+        f = open("game_info/items.txt", 'r')
         name, item_type, description, attributes, object_yield = (None,) * 5
 
         for line in f:
@@ -92,5 +98,6 @@ class Parser(object):
         f.close()
 
 
+
 if __name__ == "__main__":
-    print("Initialisation functions for game.py")
+    print("Parser for Text Adventure Engine - Reads in game information")
