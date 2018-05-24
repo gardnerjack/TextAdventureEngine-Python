@@ -10,7 +10,7 @@ Created in Python 3.
 ## Usage
 
 Download the zip from the above release and unzip it wherever you want to create the game.  
-Create the required text files with the game information (see [Templates](#Templates)) in a directory with the unzipped contents.
+Create the required text files with the game information (see [Templates](###Templates)) in a directory with the unzipped contents.
 
 Run the creation script with your new template directory to initialise the engine. For example:
 
