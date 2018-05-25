@@ -12,10 +12,20 @@ Created in Python 3.
 Download the zip from the above release and unzip it wherever you want to create the game.  
 Create the required text files with the game information (see [Templates](#templates)) in a directory with the unzipped contents.
 
+If your folder with the text files is called "my_game", then your folder structure should look something like this:
+
+    .
+    ├–– my_game
+    │   ├–– items.txt
+    │   └── locations.txt
+    ├–– src
+    ├–– play.py
+    └── create.sh
+
 Run the creation script with your new template directory to initialise the engine. For example:
 
 ```
-sh create.sh sample
+sh create.sh my_game
 ```
 
 Then, just run the play Python program:
