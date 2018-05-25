@@ -15,11 +15,11 @@ Create the required text files with the game information (see [Templates](#templ
 If your folder with the text files is called "my_game", then your folder structure should look something like this:
 
     .
-    ├–– my_game
-    │   ├–– items.txt
+    ├── my_game
+    │   ├── items.txt
     │   └── locations.txt
-    ├–– src
-    ├–– play.py
+    ├── src
+    ├── play.py
     └── create.sh
 
 Run the creation script with your new template directory to initialise the engine. For example:
