@@ -5,7 +5,7 @@ Created in Python 3.
 
 ## Releases
 
-[v1.0 - The First Working Release](https://github.com/gardnerjack/TextAdventureEngine-Python/releases/tag/1.0)
+[v1.1 - Working Release](https://github.com/gardnerjack/TextAdventureEngine-Python/releases/tag/1.1)
 
 ## Usage
 
