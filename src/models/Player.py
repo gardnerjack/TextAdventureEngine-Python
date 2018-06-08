@@ -9,29 +9,29 @@ class Player(object):
     def move(self, new_location):
         self._location = new_location
 
-    def has_item(self, item):
-        return True if item in self._inventory else False
+    def has_object(self, obj):
+        return True if obj in self._inventory else False
 
-    def pickup(self, item):
-        self._inventory.append(item)
-        print("You pick up:", str(item))
+    def pickup(self, obj):
+        self._inventory.append(obj)
+        print("You pick up:", str(obj))
 
-    def drop(self, item):
-        self._inventory.remove(item)
-        print("You drop:", str(item))
+    def drop(self, obj):
+        self._inventory.remove(obj)
+        print("You drop:", str(obj))
 
     @property
     def location(self):
         return self._location
 
     def __str__(self):
-        return "INVENTORY: {items}".format(
-            items = ', '.join([str(i) for i in self._inventory])
+        return "INVENTORY: {objects}".format(
+            objects = ', '.join([str(i) for i in self._inventory])
         )
-        # return "XP: {xp}\nLEVEL: {lvl}\nINVENTORY: {items}".format(
+        # return "XP: {xp}\nLEVEL: {lvl}\nINVENTORY: {objects}".format(
         #     xp = self.xp,
         #     lvl = self.level,
-        #     items = ', '.join([str(i) for i in self._inventory])
+        #     objects = ', '.join([str(i) for i in self._inventory])
         # )
 
 

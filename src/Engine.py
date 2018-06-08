@@ -2,14 +2,14 @@ from re import match
 
 from src.utilities.Parser  import Parser
 from src.utilities.Handler import Handler
-from src.models.Item       import Object, Tool
+from src.models.Object     import Item, Tool
 from src.models.Player     import Player
 
 
 class Engine(object):
 
     def __init__(self):
-        self.items, self.locations = Parser().initilise_game_info()
+        self.objects, self.locations = Parser().initilise_game_info()
         self.player = Player(list(self.locations.values())[0])
         self.handler = Handler()
 
@@ -27,62 +27,64 @@ class Engine(object):
 
 
     def get(self, command):
-        item = self.items.get(command[4:])
-        if item and self.player.location.item_exists(item) and type(item) == Tool:
-            self.player.location.remove_item(item)
-            self.player.pickup(item)
+        obj = self.objects.get(command[4:])
+        if obj and self.player.location.object_exists(obj) and isinstance(obj, Tool):
+            self.player.location.remove_object(obj)
+            self.player.pickup(obj)
         else:
-            print("this item isn't here or can't be picked up")
+            print("This object isn't here or can't be picked up")
 
 
     def drop(self, command):
-        item = self.items.get(command[4:])
-        if item and self.player.has_item(item):
-            self.player.location.add_item(item)
-            self.player.drop(item)
+        obj = self.objects.get(command[4:])
+        if obj and self.player.has_object(obj):
+            self.player.location.add_object(obj)
+            self.player.drop(obj)
         else:
-            print("You don't have: {item}".format(
-                item = item
+            print("You don't have: {obj}".format(
+                obj = obj
             ))
 
 
     def use(self, command):
         matchObj = match(r"use (\S+) on (\S+)", command)
         if matchObj:
-            item_text, thing_text = matchObj.groups()
+            tool_text, item_text = matchObj.groups()
 
-            item  = self.items.get(item_text)
-            thing = self.items.get(thing_text)
+            tool = self.objects.get(tool_text)
+            item = self.objects.get(item_text)
 
-            if not item or not self.player.has_item(item):
-                print("You do not have: {item}".format(
-                    item = str(item) if item else item_text
+            if not tool or not self.player.has_object(tool):
+                print("You do not have: {tool}".format(
+                    tool = tool_text
                 ))
 
-            elif not thing or not self.player.location.item_exists(thing):
+            elif not item or not self.player.location.object_exists(item):
                 print("{item} does not exist".format(
-                    item = str(thing) if thing else thing_text
+                    item = item_text
                 ))
 
             else:
-                if len(item.attributes_set().union(thing.attributes_set())) > 0:
-                    self.player.pickup(thing.reward)
-                    self.player.location.remove_item(thing)
+                is_tool = isinstance(tool, Tool)
+                is_item = isinstance(item, Item)
+                if is_tool and is_item and len(tool.attributes_set().union(item.attributes_set())) > 0:
+                    self.player.pickup(item.reward)
+                    self.player.location.remove_obj(item)
                 else:
-                    print("{item} cannot be used on {thing}".format(
-                        item = item,
-                        thing = thing
+                    print("{tool} cannot be used on {item}".format(
+                        tool = tool,
+                        item = item
                     ))
         else:
-            print("Incorrect usage of command: use <item> on <object>")
+            print("Incorrect usage of command: use <tool> on <item>")
 
 
     def inspect(self, command):
-        item = self.items.get(command[8:])
-        if self.player.has_item(item) or self.player.location.item_exists(item):
-            print(item.description)
+        obj = self.objects.get(command[8:])
+        if self.player.has_object(obj) or self.player.location.object_exists(obj):
+            print(obj.description)
         else:
-            print("cannot inspect item")
+            print("cannot inspect object")
 
 
     def play(self):

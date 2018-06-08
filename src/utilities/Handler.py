@@ -46,7 +46,7 @@ class Handler(object):
         print(" n, e, s, w - abbreviated versions of movement commands")
         print(" show - show description of current location")
         print(" p, player - display player information")
-        print(" actions:\n    get <item>\n    drop <item>\n    use <item> on <object>\n    inspect <item/object>")
+        print(" actions:\n    get <object>\n    drop <object>\n    use <tool> on <item>\n    inspect <object>")
 
 
 if __name__ == "__main__":

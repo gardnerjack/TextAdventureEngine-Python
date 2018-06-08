@@ -1,5 +1,5 @@
 name: rock
-type: object
+type: item
 description: A large boulder with mineral veins running through it.
 attributes: mining
 yield: coal
@@ -13,3 +13,4 @@ name: axe
 type: tool
 description: just an axe
 attributes: wood
+--

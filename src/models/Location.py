@@ -1,10 +1,10 @@
 class Location(object):
 
-    def __init__(self, name, description, items, destinations):
+    def __init__(self, name, description, objects, destinations):
         self._name = name
         self._description = description
         self._destinations = destinations if destinations else []
-        self._items = items if items else []
+        self._objects = objects if objects else []
 
         self._abbreviations = {
             'n': 'north',
@@ -25,16 +25,16 @@ class Location(object):
         print(str(self))
 
 
-    def item_exists(self, item):
-        return True if item in self._items else False
+    def object_exists(self, obj):
+        return True if obj in self._objects else False
 
 
-    def remove_item(self, item):
-        self._items.remove(item)
+    def remove_object(self, obj):
+        self._objects.remove(obj)
 
 
-    def add_item(self, item):
-        self._items.append(item)
+    def add_object(self, obj):
+        self._objects.append(obj)
 
 
     def get_destination(self, direction):
@@ -56,7 +56,7 @@ class Location(object):
     def info(self):
         print("name:", self._name)
         print("description:", self._description)
-        print("items:", ', '.join(self._items))
+        print("objects:", ', '.join(self._objects))
         print("destinations:", ', '.join([str(i) for i in self._destinations]))
 
 
@@ -76,7 +76,7 @@ class Destination(object):
         return self._direction
 
     def __str__(self):
-        return "\"{name}\"[{direction}]".format(
-            name = self._name,
-            direction = self._direction
+        return "{direction} -> \"{name}\"".format(
+            direction = self._direction,
+            name = self._name
         )
