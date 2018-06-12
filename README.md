@@ -3,14 +3,10 @@
 Uses a set of easy-to-make text file templates to create a text adventure game.  
 Created in Python 3.
 
-## Releases
-
-[v1.1 - Working Release](https://github.com/gardnerjack/TextAdventureEngine-Python/releases/tag/1.1)
-
 ## Usage
 
-Download the zip from the above release and unzip it wherever you want to create the game.  
-Create the required text files with the game information (see [Templates](#templates)) in a directory with the unzipped contents.
+Download the repository (or clone).  
+Create the required text files with the game information (see [Templates](#templates)) in the directory.
 
 If your folder with the text files is called "my_game", then your folder structure should look something like this:
 
