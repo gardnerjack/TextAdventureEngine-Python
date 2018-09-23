@@ -1,9 +1,9 @@
 from re import match
 
-from src.utilities.Parser  import Parser
-from src.utilities.Handler import Handler
-from src.models.Object     import Item, Tool
-from src.models.Player     import Player
+from utilities.Parser  import Parser
+from utilities.Handler import Handler
+from models.Object     import Item, Tool
+from models.Player     import Player
 
 
 class Engine(object):
@@ -69,7 +69,7 @@ class Engine(object):
                 is_item = isinstance(item, Item)
                 if is_tool and is_item and len(tool.attributes_set().union(item.attributes_set())) > 0:
                     self.player.pickup(item.reward)
-                    self.player.location.remove_obj(item)
+                    self.player.location.remove_object(item)
                 else:
                     print("{tool} cannot be used on {item}".format(
                         tool = tool,

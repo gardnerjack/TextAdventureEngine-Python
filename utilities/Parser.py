@@ -2,8 +2,8 @@ import os
 from os.path import isdir, exists
 from re      import match, finditer
 
-from src.models.Object   import Item, Tool
-from src.models.Location import Location, Destination
+from models.Object   import Item, Tool
+from models.Location import Location, Destination
 
 
 class Parser(object):
@@ -11,11 +11,9 @@ class Parser(object):
     def __init__(self):
         self.locations = {}
         self.objects = {}
-        if not isdir("src/game_info"):
-            raise Exception("Have you run the game creation script?")
-        if not exists("src/game_info/objects.txt"):
+        if not exists("game_info/objects.txt"):
             raise Exception("objects.txt does not exist")
-        if not exists("src/game_info/locations.txt"):
+        if not exists("game_info/locations.txt"):
             raise Exception("locations.txt does not exist")
 
 
@@ -44,7 +42,7 @@ class Parser(object):
 
 
     def initialise_objects(self):
-        f = open("src/game_info/objects.txt", 'r')
+        f = open("game_info/objects.txt", 'r')
         name, object_type, description, attributes, item_yield = (None,) * 5
 
         for line in f:
@@ -75,7 +73,7 @@ class Parser(object):
 
 
     def initilise_locations(self):
-        f = open("src/game_info/locations.txt", 'r')
+        f = open("game_info/locations.txt", 'r')
         name, description, loc_objects, destinations = (None,) * 4
 
         for line in f:

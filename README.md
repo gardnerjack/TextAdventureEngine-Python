@@ -6,29 +6,9 @@ Created in Python 3.
 ## Usage
 
 Download the repository (or clone).  
-Create the required text files with the game information (see [Templates](#templates)) in the directory.
+Edit the text files with the game information (see [Templates](#templates)) in the gamne_info directory.
 
-If your folder with the text files is called "my_game", then your folder structure should look something like this:
-
-    .
-    ├── my_game
-    │   ├── objects.txt
-    │   └── locations.txt
-    ├── src
-    ├── play.py
-    └── create.sh
-
-Run the creation script with your new template directory to initialise the engine. For example:
-
-```
-sh create.sh my_game
-```
-
-Then, just run the play Python program:
-
-```
-python play.py
-```
+Run the `play.py` Python program.
 
 ## The Engine
 
